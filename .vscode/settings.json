@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "mytrace.h": "c",
+        "jalapeno_topping.h": "c",
+        "stddef.h": "c",
+        "subject.h": "c",
+        "unity_fixture.h": "c"
+    }
+}
