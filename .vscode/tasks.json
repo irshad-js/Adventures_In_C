@@ -17,7 +17,7 @@
             "type": "shell",
             "command": "make",
             "options": {
-                "cwd": "${workspaceFolder}\\ObserverPatternInC\\",
+                "cwd": "${workspaceFolder}\\Debug\\",
             },
             "group": {
                 "kind": "build",

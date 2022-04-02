@@ -57,6 +57,33 @@ static void InsertNodeInCustomPosition(LinkedListNode_t * NodeNeighbour, LinkedL
 
 }
 
+
+static LinkedListNode_t * ReverseLinkedList(LinkedListNode_t * ListHead){
+
+    LinkedListNode_t* Previous = NULL;
+
+    LinkedListNode_t* Current = ListHead;
+    
+    LinkedListNode_t* Next = NULL;
+
+    while(ListHead !=NULL){
+
+        Next = ListHead->NextInList;
+
+        ListHead->NextInList = Previous;
+
+        Previous = ListHead;
+
+        ListHead = Next;
+
+    }
+
+    ListHead = Previous;
+
+    return ListHead;
+
+}
+
 int main(){
 
     #define NodesToBeCreated 25
@@ -77,5 +104,7 @@ int main(){
 
     InsertNodeInCustomPosition(TemporaryPointer, CreateNewNode(99));
 
+    ReverseLinkedList(ListHead);
+    
     return 0;
 }
