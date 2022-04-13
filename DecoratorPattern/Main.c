@@ -139,45 +139,31 @@ int main(){
     Base * Pizza = (Base*)malloc(sizeof(Base));
 
     Topping * CheeseTopping = (Topping*)malloc(sizeof(Topping));
-
     Topping * JalapenoTopping = (Topping*)malloc(sizeof(Topping));
-
     Topping * TommatoTopping = (Topping*)malloc(sizeof(Topping));
 
     // Install handlers
 
     Pizza->SetPricingData = SetRegularBasePizzaPricingData;
-
     CheeseTopping->SetPricingData = SetCheeseToppingPricingData;
-
     JalapenoTopping->SetPricingData = SetJalapenoToppingPricingData;
-
     TommatoTopping->SetPricingData = SetTommatoToppingPricingData;
 
     Pizza->GetPricingData = GetRegularBasePizzaPricingData;
-
     CheeseTopping->GetPricingData = GetCheeseToppingPricingData;
-
     JalapenoTopping->GetPricingData = GetJalapenoToppingPricingData;
-
     TommatoTopping->GetPricingData = GetTommatoToppingPricingData;
 
     Pizza->SetPricingData(Pizza);
-
     CheeseTopping->SetPricingData(CheeseTopping);
-
     JalapenoTopping->SetPricingData(JalapenoTopping);
-
     TommatoTopping->SetPricingData(TommatoTopping);
 
     /*
 
     Pizza = InitializeBasePizza(Pizza);
-
     Pizza = InitializeTopping(Pizza,CheeseTopping);
-
     Pizza = InitializeTopping(Pizza,JalapenoTopping);
-
     Pizza = InitializeTopping(Pizza,TommatoTopping);
 
     */
