@@ -10,5 +10,4 @@ typedef struct
 
 int FirstOperation( Base * const me, int variableOne);
 
-
 #endif

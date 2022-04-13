@@ -16,70 +16,67 @@ void DoSomethingObject1(void);
 typedef struct Factory Factory;
 typedef struct DynamicObject DynamicObject;
 
-struct DynamicObject{
-    
+struct DynamicObject
+{
     void (*DoSomething)(void);
-
 };
 
-struct Factory{
-
+struct Factory
+{
     DynamicObject * (*FactoryHandler)(char* Choice);
-
 };
 
 DynamicObject * FactoryHandler(char* Choice);
 
-void DoSomethingObject1(void){
-
+void DoSomethingObject1(void)
+{
     printf("\n\n Object 1 is created and called dynamically \n\n");
-
 }
 
-void DoSomethingObject2(void){
-
+void DoSomethingObject2(void)
+{
     printf("\n\n Object 2 is created and called dynamically \n\n");
-
 }
 
-void DoSomethingObject3(void){
-
+void DoSomethingObject3(void)
+{
     printf("\n\n Object 3 is created and called dynamically \n\n");
-
 }
 
-void DoSomethingObject4(void){
-
+void DoSomethingObject4(void)
+{
     printf("\n\n Object 4 is created and called dynamically \n\n");
-
 }
 
-DynamicObject * FactoryHandler(char* Choice){
-
-    if(Choice == "Object1"){
+DynamicObject * FactoryHandler(char* Choice)
+{
+    if (Choice == "Object1")
+	{
         DynamicObject * Object1 = (DynamicObject*) malloc(sizeof(DynamicObject));
         Object1->DoSomething = DoSomethingObject1;
         return Object1;
     }
 
-    if(Choice == "Object2"){
+    if (Choice == "Object2")
+	{
         DynamicObject * Object2 = (DynamicObject*) malloc(sizeof(DynamicObject));
         Object2->DoSomething = DoSomethingObject2;
         return Object2;
     }
 
-    if(Choice == "Object3"){
+    if (Choice == "Object3")
+	{
         DynamicObject * Object3 = (DynamicObject*) malloc(sizeof(DynamicObject));
         Object3->DoSomething = DoSomethingObject3;
         return Object3;
     }
 
-    if(Choice == "Object4"){
+    if (Choice == "Object4")
+	{
         DynamicObject * Object4 = (DynamicObject*) malloc(sizeof(DynamicObject));
         Object4->DoSomething = DoSomethingObject4;
         return Object4;
     }
-
 }
 
 

@@ -3,12 +3,11 @@
 
 #include "BaseClass.h"
 
-typedef struct {
-
+typedef struct
+{
     Base super;
     int FirstVariable;
     int SecondVariable;
-
 } DerivedClass;
 
 int SecondOperation( DerivedClass * const me, int variableOne);

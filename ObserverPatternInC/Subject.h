@@ -5,24 +5,20 @@
 
 typedef struct SubjectData SubjectData;
 
-struct SubjectData{
-
+struct SubjectData
+{
     int ValueOfInterest_1;
-
     int ValueOfInterest_2;
-    
     int ValueOfInterest_3;
-    
     int ValueOfInterest_4;
-
 };
 
 typedef struct SubjectClass SubjectClass;
 
-struct SubjectClass{
-
+struct SubjectClass
+{
     SubjectData SampleData;
-
+	
     int ObserverCount;
 
     void (*ObserverNotificationHandle[MAX_OBSERVERS]) (void);
@@ -44,11 +40,8 @@ struct SubjectClass{
 };
 
 void SubjectClass_Initialization(SubjectClass * const me);
-
 void SubjectClass_AddObserver(SubjectClass * const me, void (*ObserverNotificationFunction)(void));
-
 void SubjectClass_RemoveObserver(SubjectClass * const me, void (*ObserverNotificationFunction)(void));
-
 void SubjectClass_NotifyObservers(SubjectClass * const me);
 
 extern SubjectClass * DataProducer;

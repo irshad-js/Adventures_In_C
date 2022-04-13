@@ -2,15 +2,18 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+#define NodesToBeCreated 25
+
 typedef struct LinkedListNode LinkedListNode_t;
 
-struct LinkedListNode{
+struct LinkedListNode
+{
     int ValueInNode;
     struct LinkedListNode * NextInList; 
 };
 
-static LinkedListNode_t* CreateNewNode(int value){
-
+static LinkedListNode_t* CreateNewNode(int value)
+{
     LinkedListNode_t * NewNode = (LinkedListNode_t*) malloc(sizeof(LinkedListNode_t));
 
     if(NewNode == NULL) return NULL;
@@ -18,18 +21,16 @@ static LinkedListNode_t* CreateNewNode(int value){
     NewNode->NextInList = NULL;
 
     return NewNode;
-
 }
 
-static LinkedListNode_t * InsertNodeAtHead(LinkedListNode_t *ListHead,LinkedListNode_t *NodeToInsert){
-
+static LinkedListNode_t * InsertNodeAtHead(LinkedListNode_t *ListHead,LinkedListNode_t *NodeToInsert)
+{
     NodeToInsert ->NextInList = ListHead;
     return NodeToInsert;
-
 }
 
-static LinkedListNode_t * FindNode (LinkedListNode_t* ListHead, int ValueToSearch){
-
+static LinkedListNode_t * FindNode (LinkedListNode_t* ListHead, int ValueToSearch)
+{
     LinkedListNode_t * TemporaryPointer = ListHead;
 
     while(TemporaryPointer != NULL){
@@ -41,23 +42,23 @@ static LinkedListNode_t * FindNode (LinkedListNode_t* ListHead, int ValueToSearc
     }
 
     return NULL;
-
 }
 
-static void InsertNodeInCustomPosition(LinkedListNode_t * NodeNeighbour, LinkedListNode_t * NodeToBePlaced){
-
+static void InsertNodeInCustomPosition(LinkedListNode_t * NodeNeighbour, LinkedListNode_t * NodeToBePlaced)
+{
     NodeToBePlaced->NextInList = NodeNeighbour->NextInList;
     NodeNeighbour->NextInList = NodeToBePlaced;
 }
 
 
-static LinkedListNode_t * ReverseLinkedList(LinkedListNode_t * ListHead){
-
+static LinkedListNode_t * ReverseLinkedList(LinkedListNode_t * ListHead)
+{
     LinkedListNode_t* Previous = NULL;
     LinkedListNode_t* Current = ListHead;  
     LinkedListNode_t* Next = NULL;
 
-    while(ListHead !=NULL){
+    while(ListHead !=NULL)
+	{
         Next = ListHead->NextInList;
         ListHead->NextInList = Previous;
         Previous = ListHead;
@@ -66,16 +67,15 @@ static LinkedListNode_t * ReverseLinkedList(LinkedListNode_t * ListHead){
 
     ListHead = Previous;
     return ListHead;
-
 }
 
-int main(){
-
-    #define NodesToBeCreated 25
+int main()
+{
     LinkedListNode_t * ListHead = NULL;
     LinkedListNode_t * TemporaryPointer ;
 
-    for(int IterationVariable=0;IterationVariable<NodesToBeCreated;++IterationVariable){
+    for(int IterationVariable=0;IterationVariable<NodesToBeCreated;++IterationVariable)
+	{
         TemporaryPointer = CreateNewNode(IterationVariable);
         ListHead = InsertNodeAtHead(ListHead,TemporaryPointer);
     }

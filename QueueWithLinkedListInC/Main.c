@@ -6,17 +6,20 @@ typedef struct QueueNode QueueNode;
 
 typedef struct QueueImplementation QueueImplementation;
 
-struct QueueNode{
+struct QueueNode
+{
     int ValueInNode;
     struct QueueNode * NextInQueue;   
 };
 
-struct QueueImplementation{
+struct QueueImplementation
+{
     QueueNode * QueueHead;
     QueueNode * QueueTail;
 };
 
-static void InitializeQueue ( QueueImplementation * Queue){
+static void InitializeQueue ( QueueImplementation * Queue)
+{
     Queue->QueueHead = NULL;
     Queue->QueueTail = NULL;
 }
@@ -29,11 +32,11 @@ Elements come out      <-        |        |        |        |        |HEAD,TAIL 
 
 */
 
-char Enqueue(QueueImplementation * Queue, int ValueToStore){
-
+char Enqueue(QueueImplementation * Queue, int ValueToStore)
+{
     QueueNode * NewQueueNode = (QueueNode*)malloc(sizeof(QueueNode));
     
-	if(NewQueueNode == NULL) 
+	if (NewQueueNode == NULL) 
 	{
 		return 0;
 	}
@@ -41,23 +44,26 @@ char Enqueue(QueueImplementation * Queue, int ValueToStore){
     NewQueueNode->ValueInNode = ValueToStore;
     NewQueueNode->NextInQueue = NULL;
 
-    if(Queue->QueueTail != NULL)
+    if (Queue->QueueTail != NULL)
 	{
         Queue->QueueTail->NextInQueue = NewQueueNode;
     }
 
     Queue->QueueTail = NewQueueNode;
 
-    if(Queue->QueueHead == NULL) 
+    if (Queue->QueueHead == NULL) 
 	{
 		Queue->QueueHead = NewQueueNode;
 	}
 }
 
-int Dequeue (QueueImplementation * Queue){
-
-    if(Queue->QueueHead == NULL) return 0xDEADBEEF;
-
+int Dequeue (QueueImplementation * Queue)
+{
+    if (Queue->QueueHead == NULL)
+	{
+		return 0xDEADBEEF;
+	}
+	
     QueueNode * TemporaryNode = (QueueNode*)malloc(sizeof(QueueNode));
     TemporaryNode = Queue->QueueHead;
 
@@ -65,16 +71,18 @@ int Dequeue (QueueImplementation * Queue){
     StoreValue = TemporaryNode->ValueInNode;
     Queue->QueueHead = Queue->QueueHead->NextInQueue;
 
-    if(Queue->QueueHead == NULL) Queue->QueueTail = NULL;
-
+    if(Queue->QueueHead == NULL){
+		Queue->QueueTail = NULL;
+	}
+	
     free(TemporaryNode);
 
     return StoreValue;
 
 }
 
-int main(){
-
+int main()
+{
     QueueImplementation * FirstQueue = (QueueImplementation*)malloc(sizeof(QueueImplementation));
     InitializeQueue(FirstQueue);
 
@@ -85,10 +93,9 @@ int main(){
 
     int StoredQueueValue =0;
 
-    while( (StoredQueueValue = Dequeue(FirstQueue)) != 0xDEADBEEF){
-
+    while( (StoredQueueValue = Dequeue(FirstQueue)) != 0xDEADBEEF)
+	{
         printf("\n\n Items in Queue - %d \n",StoredQueueValue);
-
     }
     
     return 0;

@@ -30,7 +30,8 @@ double BronzePriceStrategy(double amount, double shipping);
 double SilverPriceStrategy(double amount, double shipping);
 double GoldPriceStrategy(double amount, double shipping);
 
-struct Customer{
+struct Customer
+{
     const char * CustomerName;
     const char * CustomerAddress;
     PriceStrategy PricingFunction;
@@ -38,28 +39,32 @@ struct Customer{
 
 Customer CreateCustomer( Customer * const me, const char * CustomerName, const char * CustomerAddress, PriceStrategy PricingFunction );
 
-double BronzePriceStrategy(double amount, double shipping){
+double BronzePriceStrategy(double amount, double shipping)
+{
     return amount * 0.98 + shipping;
 }
 
-double SilverPriceStrategy(double amount, double shipping){
+double SilverPriceStrategy(double amount, double shipping)
+{
     return amount * 0.95 + shipping;
 }
 
-double GoldPriceStrategy(double amount, double shipping){
+double GoldPriceStrategy(double amount, double shipping)
+{
     /* Free shipping for gold customers. */
     return amount * 0.90;
 }
 
 
-Customer CreateCustomer( Customer * const me, const char * CustomerName, const char * CustomerAddress, PriceStrategy PricingFunction ){
+Customer CreateCustomer( Customer * const me, const char * CustomerName, const char * CustomerAddress, PriceStrategy PricingFunction )
+{
     me->CustomerAddress = CustomerAddress;
     me->CustomerName = CustomerName;
     me->PricingFunction = PricingFunction;
 }
 
-int main(){
-
+int main()
+{
     Customer BronzeCustomer, GoldCustomer, SilverCustomer;
     CreateCustomer(&BronzeCustomer,"BronzeSales","Denmark",BronzePriceStrategy);
     CreateCustomer(&GoldCustomer,"GoldSales","Germany",GoldPriceStrategy);

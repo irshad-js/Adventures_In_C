@@ -15,123 +15,95 @@ Decorator design pattern implementation is thus
 */
 
 #define Regular_Base_Price 2.25
-
 #define Jalapeno_Topping_Price 0.85
-
 #define Cheese_Topping_Price 0.95
-
 #define Tommato_Topping_Price 0.55
 
-
 typedef struct Base Base;
-
 typedef struct Topping Topping;
 
-struct Base{
-    
+struct Base
+{  
     double PricingData;
-
     void (*SetPricingData)(Base * me);
-
     double (*GetPricingData)(Base * me);
-
 };
 
-struct Topping{
-
+struct Topping
+{
     double PricingData;
-
     void (*SetPricingData)(Topping * me);
-
     double (*GetPricingData)(Topping * me);
-
 };
 
 void SetRegularBasePizzaPricingData(Base * me);
-
 double GetRegularBasePizzaPricingData(Base * me);
 
 void SetCheeseToppingPricingData(Topping * me);
-
 double GetCheeseToppingPricingData(Topping * me);
 
 void SetJalapenoToppingPricingData(Topping * me);
-
 double GetJalapenoToppingPricingData(Topping * me);
 
 void SetTomattoToppingPricingData(Topping * me);
-
 double GetTommatoToppingPricingData(Topping * me);
 
 
-void SetRegularBasePizzaPricingData(Base * me){
-
+void SetRegularBasePizzaPricingData(Base * me)
+{
     me->PricingData = Regular_Base_Price;
-
 }
 
-double GetRegularBasePizzaPricingData(Base * me){
-
+double GetRegularBasePizzaPricingData(Base * me)
+{
     return me->PricingData;
-
 }
 
-void SetCheeseToppingPricingData(Topping * me){
-
+void SetCheeseToppingPricingData(Topping * me)
+{
     me->PricingData = Cheese_Topping_Price;
-
 }
 
-double GetCheeseToppingPricingData(Topping * me){
-
+double GetCheeseToppingPricingData(Topping * me)
+{
     return me->PricingData;
-
 }
 
-void SetJalapenoToppingPricingData(Topping * me){
-
+void SetJalapenoToppingPricingData(Topping * me)
+{
     me->PricingData = Jalapeno_Topping_Price;
-
 }
 
-double GetJalapenoToppingPricingData(Topping * me){
-
+double GetJalapenoToppingPricingData(Topping * me)
+{
     return me->PricingData;
-
 }
 
-void SetTommatoToppingPricingData(Topping * me){
-
+void SetTommatoToppingPricingData(Topping * me)
+{
     me->PricingData = Tommato_Topping_Price;
-
 }
 
-double GetTommatoToppingPricingData(Topping * me){
-
+double GetTommatoToppingPricingData(Topping * me)
+{
     return me->PricingData;
-
 }
 
-Base* InitializeBasePizza(Base * const me){
-
+Base* InitializeBasePizza(Base * const me)
+{
     me->SetPricingData(me);
-
     return me;
-    
 }
 
-Base* InitializeTopping(Base * const me, Topping * const this){
+Base* InitializeTopping(Base * const me, Topping * const this)
+{
 
-    if(this->PricingData == 0){
-
+    if (this->PricingData == 0){
         this->SetPricingData(this);
-
     }
 
     me->PricingData = me->PricingData + this->GetPricingData(this);
-
     return me;
-
 }
 
 int main(){
